@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+<title>翊豪真他媽是個天才</title>
+<link href="jquery-mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="js/PSYCC.js" type="text/javascript"></script>
+<script src="js/NTUPSY.js" type="text/javascript"></script>
+<script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+<script src="phonegap.js" type="text/javascript"></script>
+
+<style>
+	#map_div {
+		padding-top: 10%;
+		padding-bottom: 10%;
+		position: absolute;
+		width: 100%;
+		height: 88%;
+		max-height: 1600px;
+	}
+	.detail{color:brown;font-size:18px;padding-top:10px;padding-left:10px;}	
+	.createtime{color:blue;font-size:16px;padding-top:10px;padding-left:30px;}
+	.updatetime{color:green;font-size:16px;padding-top:10px;padding-left:30px;}
+	.title{color:brown;font-size:18px;padding-top:10px;padding-left:10px;} 
+</style>
+
+</head>
+
+<body>
+
+<!-- home page -->
+<div data-role="page" id="home" >
+  <div data-role="header" data-position="fixed" data-theme="b" >
+      <a href="" data-icon="delete" id="end" class="ui-btn-right" data-iconpos="notext">結束</a>
+      
+      <h1>我的足跡</h1>
+  </div>
+  <div data-role="content">
+     <div id="entries">
+   		<ul id="recent" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="尋找足跡"></ul>
+     </div>
+  </div>
+  <div data-role="footer" data-position="fixed" data-theme="b">
+	  <div data-role="navbar" >
+      <ul >
+        <li><a href="#" id="btn_showhome2" data-icon="home" data-iconpos="top">我的足跡</a></li> 
+        <li><a href="#new" id="btn_create2" data-icon="search" data-iconpos="top">凡走過必留下痕跡</a></li>
+      </ul>
+      </div>
+  </div>
+</div>
+
+<!-- mappage page -->
+<div data-role="page" id="mappage" >
+  <div data-role="header" data-position="fixed" data-theme="b">
+      <a href="" data-icon="delete" id="end" class="ui-btn-right" data-iconpos="notext">結束</a>
+      <a data-rel="back" data-role="button">返回</a>
+      <h1>我在哪</h1>
+  </div>
+  <div data-role="content" style="padding:0px">
+      <div id="map_div"></div>
+  </div>
+  <div data-role="footer" data-position="fixed" data-theme="b">
+	  <div data-role="navbar" >
+      <ul>
+        <li><a href="#home" id="btn_showhome1" data-icon="home" data-iconpos="top">我的足跡</a></li>
+        <li><a href="#new" id="btn_create1" data-icon="search" data-iconpos="top">凡走過必留下痕跡</a></li>
+      </ul>
+      </div>
+  </div>
+</div>
+
+
+
+<!-- display page -->
+<div data-role="page" id="display">
+  <div data-role="header" data-theme="b">
+      <a href="" data-icon="delete" id="end" class="ui-btn-right" data-iconpos="notext">結束</a>
+      <a data-rel="back" data-role="button">返回</a>
+      <h1>走過的地方</h1>
+  </div> 
+  <div data-role="content">
+  	  <div data-role="navbar" >
+         <ul>
+            <li><a href="#mappage" id="btn_showmap3" data-role="button" data-transition="pop">地圖標示</a></li>
+            <li><a href="#home" id="btn_showhome3" data-role="button" data-transition="pop">我的足跡</a></li>
+         </ul>
+      </div>  
+      <div id="showdetail" class="detail"></div>  
+      <div id="createtime" class="createtime"></div>  
+      <div id="updatetime" class="updatetime"></div>
+   </div>
+   <div data-role="footer" data-position="fixed" data-theme="b">
+	  <div data-role="navbar" >
+         <ul>
+             <li><a href="#editNote" data-icon="home" id="editItem" data-role="button">編輯足跡</a></li>
+             <li><a href="#home" data-icon="info" id="delete" data-role="button">刪除足跡</a></li>
+        </ul>
+      </div>
+   </div>
+</div>
+
+<!-- new page  -->
+<div data-role="page"  id="new">
+  <div data-role="header" data-position="fixed" data-theme="b">
+      <a href="" data-icon="delete" id="end" class="ui-btn-right" data-iconpos="notext">結束</a>
+      <a data-rel="back" data-role="button">返回</a>
+    
+      <h1>凡走過必留下痕跡</h1>
+  </div>
+  <div data-role="content">
+      <div data-role="fieldcontain">
+          <label for="title">翊豪：</label>
+          <input type="text" name="title" id="title" value="" />
+      </div>
+      <div data-role="fieldcontain">
+          <label for="details">是個：</label>
+          <textarea cols="40" rows="8" name="details" id="details" ></textarea>
+      </div>
+      <div data-role="fieldcontain">
+          <label for="latitude">天：</label>
+          <input type="text" name="latitude" id="latitude" value=""  />
+      </div>
+      <div data-role="fieldcontain">
+          <label for="longitude">才：</label>
+          <input type="text" name="longitude" id="longitude" value=""  />
+      </div>      
+      <input name="btn_insert" id="btn_insert" type="button" value="上傳" >    
+  </div>
+  </div>
+  <div data-role="footer" data-position="fixed" data-theme="b">
+	  <div data-role="navbar" >
+      <ul>
+        <li><a href="#home" id="btn_showhome1" data-icon="home" data-iconpos="top">我的足跡</a></li>
+        <li><a href="#new" id="btn_create1" data-icon="search" data-iconpos="top">凡走過必留下痕跡</a></li>
+      </ul>
+      </div>
+  </div>
+</div>
+
+<!-- editNote page  -->
+<div data-role="page" id="editNote">
+  <div data-role="header" data-position="fixed" data-theme="b">
+        <a data-rel="back" data-role="button">返回</a>
+      <h1>修改足跡</h1>
+  </div>
+  <div data-role="content">
+      <div data-role="fieldcontain">
+          <label for="title2">翊豪：</label>
+          <input type="text" name="title2" id="title2" value=""  />
+      </div>
+      <div data-role="fieldcontain">
+          <label for="details2">是個：</label>
+             <textarea cols="40" rows="8" name="details2" id="details2"></textarea>
+      </div>
+      <div data-role="fieldcontain">
+          <label for="latitude2">天：
+         
+          </label>
+          <input type="text" name="latitude2" id="latitude2" value=""  />
+      </div>
+      <div data-role="fieldcontain">
+          <label for="longitude2">才：</label>
+          <input type="text" name="longitude2" id="longitude2" value=""  />
+      </div>      
+      <input name="update" type="button" value="修改" id="update">     
+  </div>
+ 
+</div>
+
+</body>
+</html>

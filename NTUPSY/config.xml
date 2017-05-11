@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+    xmlns:gap = "http://phonegap.com/ns/1.0"
+    id        = "com.yhwang.googlemap"
+    version   = "1.0.0">
+
+<name>翊豪是個天才</name>
+
+<description>
+翊豪是個天才
+</description>
+
+
+<preference name="orientation" value="portrait" />
+<preference name="android-minSdkVersion" value="7" />
+<plugin name="cordova-plugin-geolocation" spec="~2.4.2" />
+
+<icon src="images/yhwang.jpg" gap:platform="android" />
+<gap:splash src="images/yhwang2.jpg" gap:platform="android" />
+
+</widget>
